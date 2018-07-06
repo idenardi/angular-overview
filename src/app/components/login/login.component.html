@@ -1,0 +1,38 @@
+<!-- {{ f.value | json }} -->
+
+<!-- <div class="container">
+    <form id="loginform" #f="ngForm" (submit)="submitForm(f.value)">
+        <div style="margin-bottom: 25px; width: 400px; " class="form-group">
+            <label for="usuario">Usuario</label>
+            <input ngModel type="text" class="form-control" name="usuario" value="" placeholder="Email de login" #usuarioNome="ngModel">
+        </div>
+
+        <div style="margin-bottom: 25px; width: 400px;" class="form-group">
+            <label for="senha">Senha</label>
+            <input ngModel type="password" class="form-control" name="senha" placeholder="Senha">
+        </div>
+        <button class="btn btn-primary">Login</button>
+    </form>
+</div> -->
+
+<div class="container">
+    <form id="loginform" #f="ngForm" (submit)="submitForm(f.value)">
+        <div style="margin-bottom: 25px; width: 400px;" class="form-group">
+            <label for="usuario">Usuario</label>
+            <input ngModel required type="text" class="form-control" name="usuario" value="" placeholder="Email de login" #usuarioNome="ngModel">
+            <div class="alert alert-danger" *ngIf="usuarioNome.touched && !usuarioNome.valid">
+                <div *ngIf="usuarioNome.errors.required">Usuario é um campo obrigatório</div>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 25px; width: 400px;" class="form-group">
+            <label for="senha">Senha</label>
+            <input ngModel required minlength="6" type="password" class="form-control" name="senha" placeholder="Senha" #usuarioSenha="ngModel">
+            <div class=" alert alert-danger" *ngIf="usuarioSenha.touched && !usuarioSenha.valid">
+                <div *ngIf="usuarioSenha.errors.required">Senha é um campo obrigatório</div>
+                <div *ngIf="usuarioSenha.errors.minlength">Senha tem que possuir no mínimo 6 caracteres</div>
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary" [disabled]='!f.valid'>Login</button>
+    </form>
+</div>

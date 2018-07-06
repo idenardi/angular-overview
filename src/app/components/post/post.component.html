@@ -1,0 +1,7 @@
+<div class="card" style='margin-top: 5px; height: 98%;' [style.backgroundColor]='backgroundColor'>
+    <div class="card-body">
+        <h5 class="card-title" (click)='verAutor()'>{{ post.title }}</h5>
+        <p class="card-text">{{ post.body }}}</p>
+        <a class="btn btn-primary" [routerLink]="['/users', post.userId ]">Ver Autor</a>
+    </div>
+</div>

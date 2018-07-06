@@ -1,0 +1,21 @@
+<div class="container">
+    <form [formGroup]="form">
+        <div style="margin-bottom: 25px; width: 400px;" class="form-groupp">
+            <label for="usuario">Usuario</label>
+            <input formControlName="usuarioNome" type="text" class="form-control" name="usuario" value="" placeholder="Email de login">
+            <div class="alert alert-danger" *ngIf="form.get('usuarioNome').touched && form.get('usuarioNome').invalid">
+                <div *ngIf="form.get('usuarioNome').errors.email">E-mail invalido</div>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 25px; width: 400px;" class="form-group">
+            <label for="senha">Senha</label>
+            <input formControlName="usuarioSenha" type="password" class="form-control" name="senha" placeholder="Senha">
+            <div class="alert alert-danger" *ngIf="form.get('usuarioSenha').touched && form.get('usuarioSenha').invalid">
+                <div *ngIf="form.get('usuarioSenha').errors.required">Senha é obrigatoria</div>
+                <div *ngIf="form.get('usuarioSenha').errors.minlength">Senha tem que possuir no minimo 6 caracteres</div>
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary" [disabled]="form.invalid">Login</button>
+    </form>
+</div>
